@@ -1,16 +1,19 @@
 'use server'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { normalizeIndonesianPhone } from '@/lib/phone'
 
 export type LoginState = { error?: string }
 async function signInForRole(role: 'admin'|'client', formData: FormData): Promise<LoginState> {
-  const email = String(formData.get('email') ?? '').trim().toLowerCase()
   const password = String(formData.get('password') ?? '')
-  if (!email || !password) return { error: 'Email dan password wajib diisi.' }
+  const legacy = role === 'client' && formData.get('method') === 'legacy'
+  const email = String(formData.get('email') ?? '').trim().toLowerCase()
+  const phone = normalizeIndonesianPhone(String(formData.get('phone') ?? ''))
+  if (!password || ((role === 'admin' || legacy) ? !email : !phone)) return { error: role === 'admin' || legacy ? 'Email dan password wajib diisi.' : 'Nomor HP Indonesia dan kode akses wajib diisi.' }
   if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY) return { error: 'Supabase belum dikonfigurasi. Isi .env.local terlebih dahulu.' }
   const supabase = await createClient()
-  const { error: loginError } = await supabase.auth.signInWithPassword({ email, password })
-  if (loginError) return { error: 'Email atau password tidak cocok.' }
+  const { error: loginError } = await supabase.auth.signInWithPassword(role === 'admin' || legacy ? { email, password } : { phone: phone!, password })
+  if (loginError) return { error: role === 'admin' || legacy ? 'Email atau password tidak cocok.' : 'Nomor HP atau kode akses tidak cocok.' }
   const { data: { user }, error: userError } = await supabase.auth.getUser()
   if (userError || !user) { await supabase.auth.signOut(); return { error: 'Sesi tidak tersedia. Coba lagi.' } }
   const { data: profile, error } = await supabase.from('rapi_profiles').select('id,role,status').eq('id', user.id).maybeSingle()

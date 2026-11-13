@@ -42,7 +42,7 @@ export default function LoginPage() {
           </div>
         </div>
         <p className="relative text-xs text-slate-500">
-          Kode client digunakan untuk identifikasi, bukan sebagai password.
+          Simpan kode akses dengan aman dan jangan bagikan kepada orang lain.
         </p>
       </section>
       <section className="flex items-center justify-center px-5 py-10 sm:px-10">
@@ -55,7 +55,7 @@ export default function LoginPage() {
             Masuk sebagai client
           </h2>
           <p className="mt-3 text-sm leading-6 text-slate-500">
-            Gunakan email dan password akun client. Kode client tidak digunakan untuk login.
+            Gunakan nomor HP dan kode akses yang diberikan admin.
           </p>
           <LoginForm />
           <div className="mt-8 flex items-start gap-3 rounded-xl bg-[#eef1ff] p-4 text-sm text-[#42549b]">
