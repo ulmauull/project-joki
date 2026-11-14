@@ -35,7 +35,7 @@ export default function HomePage() {
           <div className="landing-hero-copy">
             <p className="landing-eyebrow"><span className="landing-dot" /> PARTNER TUGAS KAMU</p>
             <h1 id="hero-title">TMTK.<br /><span>Tugasmu,<br />Tugasku juga.</span></h1>
-            <p className="landing-lead">Ada tugas atau materi yang perlu disiapkan? Tugasin bantu kamu mengatur kebutuhan, memantau progres, dan mengecek hasilnya dalam satu tempat.</p>
+            <p className="landing-lead">Ada tugas atau materi yang perlu disiapkan? TMTK bantu kamu mengatur kebutuhan, memantau progres, dan mengecek hasilnya dalam satu tempat.</p>
             <div className="landing-actions">
               <a className="landing-btn landing-btn-primary" href="#layanan">Lihat layanan <span aria-hidden="true">→</span></a>
               <Link className="landing-btn landing-btn-outline" href="/login">Masuk sebagai client</Link>
@@ -67,7 +67,7 @@ export default function HomePage() {
 
         <section className="landing-section landing-container" id="portal" aria-labelledby="portal-title">
           <div className="landing-cta"><div><p className="landing-eyebrow">SUDAH JADI CLIENT?</p><h2 id="portal-title">Pesanan kamu ada di sini.</h2><p>Masuk menggunakan nomor HP dan kode akses dari admin untuk mengecek progres, dokumen, dan revisi.</p></div><Link className="landing-btn landing-btn-primary" href="/login">Buka portal client <span aria-hidden="true">→</span></Link></div>
-          <p className="landing-contact-note">Belum punya akses? Hubungi admin Tugasin untuk mendiskusikan kebutuhan dan mendapatkan kode akses.</p>
+          <p className="landing-contact-note">Belum punya akses? Hubungi admin TMTK untuk mendiskusikan kebutuhan dan mendapatkan kode akses.</p>
         </section>
       </main>
 

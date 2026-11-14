@@ -15,7 +15,7 @@ export function Brand({
       <span className="grid size-10 place-items-center rounded-[13px] bg-[#4666ff] text-lg text-white shadow-lg shadow-[#4666ff]/25">
         t.
       </span>
-      {!compact && <span className="text-lg tracking-[-0.03em]">tugasin</span>}
+      {!compact && <span className="text-lg tracking-[-0.03em]">TMTK</span>}
     </Link>
   )
 }
