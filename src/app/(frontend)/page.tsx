@@ -34,7 +34,7 @@ export default function HomePage() {
         <section className="landing-hero landing-container" aria-labelledby="hero-title">
           <div className="landing-hero-copy">
             <p className="landing-eyebrow"><span className="landing-dot" /> PARTNER TUGAS KAMU</p>
-            <h1 id="hero-title">Tugas lebih rapi,<br /><span>pikiran lebih tenang.</span></h1>
+            <h1 id="hero-title">TMTK.<br /><span>Tugasmu,<br />Tugasku juga.</span></h1>
             <p className="landing-lead">Ada tugas atau materi yang perlu disiapkan? Tugasin bantu kamu mengatur kebutuhan, memantau progres, dan mengecek hasilnya dalam satu tempat.</p>
             <div className="landing-actions">
               <a className="landing-btn landing-btn-primary" href="#layanan">Lihat layanan <span aria-hidden="true">→</span></a>
@@ -71,7 +71,7 @@ export default function HomePage() {
         </section>
       </main>
 
-      <footer className="landing-footer"><div className="landing-container landing-footer-inner"><Brand /><p>Semua progres, satu tempat.</p><a href="#hero-title">Kembali ke atas ↑</a></div></footer>
+      <footer className="landing-footer"><div className="landing-container landing-footer-inner"><Brand /><p>TMTK — Tugasmu, Tugasku juga.</p><a href="#hero-title">Kembali ke atas ↑</a></div></footer>
     </div>
   )
 }
