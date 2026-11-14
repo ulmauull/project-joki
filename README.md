@@ -16,6 +16,14 @@ Jika ada lebih dari satu profil admin, tentukan terlebih dahulu akun yang akan d
 
 Jika tidak ada admin, buat akun di Supabase Dashboard → Authentication → Users, salin UUID, lalu gunakan contoh ADMIN dalam `supabase/02_template_tambah_profil.sql` (hapus komentar `--`, ganti UUID/nama). Berikan role admin hanya kepada akun yang dipercaya. Jangan rerun file 01 atau 03 tanpa memahami keadaan database.
 
+## Izin unduh dokumen
+
+Setelah backup, jalankan `supabase/05_izin_unduh_dokumen.sql` sekali di Supabase SQL Editor (uji di project percobaan dulu). Jangan jalankan ulang `01_schema_dan_akses.sql` pada database yang sudah ada. Semua dokumen, termasuk yang sebelumnya sudah dibagikan, mulai dengan izin unduh nonaktif. Jalankan migrasi sebelum memakai versi aplikasi ini.
+
+Admin membagikan dokumen untuk preview lalu secara terpisah memilih **Izinkan unduh** dan mengonfirmasi. Menyembunyikan/membagikan ulang dokumen mereset izin unduh. Client perlu me-refresh dashboard untuk melihat perubahan. Admin tetap dapat mengunduh file internal. PDF menggunakan viewer browser; toolbar disembunyikan jika izin unduh nonaktif, tetapi beberapa browser mungkin mengabaikan pengaturan ini.
+
+**Bukan perlindungan anti-salin atau kontrol akses unduh di tingkat Storage.** Agar preview bekerja, file asli dikirim ke browser client yang berhak melihatnya; client dapat menyimpannya melalui developer tools, akses Storage/API langsung, fungsi browser lain, atau screenshot. Jangan bagikan file yang tidak boleh disalin. Policy Storage tetap wajib diuji untuk memastikan client lain dan client revoked tidak bisa mengakses dokumen.
+
 ## 2. Konfigurasi aplikasi
 
 1. Install Node.js 24.22.1+ dan pnpm 10. Extract proyek lalu jalankan `pnpm install --frozen-lockfile`.
@@ -31,7 +39,7 @@ Jika tidak ada admin, buat akun di Supabase Dashboard → Authentication → Use
 - Admin dapat membuat order, mengedit status/deadline/harga/pembayaran, menyimpan catatan internal, upload dan membagikan dokumen, dan memproses revisi.
 - Untuk client baru: login admin → Client → Tambah profil. Isi nama, universitas dan nomor HP; kode akses acak ditampilkan sekali. Lihat `PANDUAN-LOGIN-CLIENT.md`.
 - Client lama yang sudah memiliki akun email tetap dapat login melalui pilihan akun lama. Akun phone-only yang cocok dapat disiapkan melalui Reset kode; lihat panduan.
-- Client melihat pesanan dan dokumen miliknya, mengunduh dokumen yang telah dibagikan, mengajukan revisi saat order review/selesai, serta mengubah password. Kode client/order CL-/ORD- adalah ID, bukan kode akses rahasia untuk login.
+- Client melihat pesanan dan dokumen miliknya, mengunduh dokumen yang telah dibagikan setelah admin mengizinkan, mengajukan revisi saat order review/selesai, serta mengubah password. Kode client/order CL-/ORD- adalah ID, bukan kode akses rahasia untuk login.
 
 ## 4. Verifikasi sebelum data asli
 
